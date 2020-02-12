@@ -12,9 +12,15 @@ export default class Toggle extends React.Component {
 
         let direction = isSorted ? 1 : -1;
 
-        const arr = this.props.tasks;
-        console.log(arr);
-        arr.sort((a,b) => {
+        // const arr = this.props.tasks;
+        // console.log(arr);
+        // arr.sort((a,b) => {
+        
+        // const arr = [].slice.call(this.props.tasks).sort((a, b) => {
+        let task = this.props.tasks;
+        let arr = task.slice();        
+        arr.sort((a, b) => {
+        
             if (a[type] === b[type]) {
                 return 0;
             }
@@ -26,15 +32,20 @@ export default class Toggle extends React.Component {
             }
         })
 
-        console.log(arr);
+        
         this.sorted[type] = !isSorted;
 
-        
-        this.props.onTaskSort(arr, '');
+        console.log(arr, this.props.static);
+        this.props.onTaskUpdate({
+            tasks: arr
+        });
     }
 
     reset = () => {
-        this.props.onTaskSort(this.props.static, '');
+        this.props.onTaskUpdate({
+            tasks: this.props.static,
+            text: ''
+        }, this.props.static);
         console.log(this.props.static);
     }
 

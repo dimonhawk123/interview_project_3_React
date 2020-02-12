@@ -3,18 +3,12 @@ import React from 'react';
 class Elem extends React.Component {
     
 
-    // handleTaskDelete = () => {
-    //     this.props.onTaskDelete(this.props.index);
-    // }
     handleTaskDelete = () => {
         this.props.onTaskDelete(this.props.id);
     }
 
-    handleTaskDone = () => {        
-        let task = this.props.task;
-        task.isDone = !task.isDone;
-        this.props.onTaskChange(task, this.props.index);
-        
+    handleTaskDone = () => {     
+        this.props.onTaskChange(this.props.index);        
     } 
 
     render() {

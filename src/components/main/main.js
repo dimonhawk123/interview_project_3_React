@@ -20,63 +20,11 @@ class Main extends React.Component {
         let month = date.getMonth();
         let day = date.getDate();
         return `${day}.${month}.${year}`;
-    }
-
-    handleTaskAdd = (task) => {
-        const elem = {
-            text: task,
-            id: Date.now(),
-            category: '',
-            fav: false,
-            isDone: false
-        }
-        this.staticTasks = this.staticTasks.concat(elem);
-        console.log(this.staticTasks);
-        this.setState({
-            tasks: this.staticTasks,
-            text: ''
-        })        
-    }
-
-    // handleTaskDelete = (index) => {
-    //     let arr = this.staticTasks;
-    //     arr.splice(index, 1);
-    //     this.setState({
-    //         tasks: arr
-    //     })
-    // }
-    handleTaskDelete = (id) => { 
-        let arr = this.staticTasks;
-        let index = arr.findIndex(item => item.id === id);
-        arr.splice(index, 1);
-        console.log(this.staticTasks, arr);
-        this.setState({
-            tasks: arr,
-            text: ''
-        })
-    }
-
-    handleTaskChange = (change, index) => {
-        let arr = this.state.tasks;
-        arr[index] = change;
-        this.setState({
-            tasks: arr
-        })
-        console.log(this.staticTasks);
-    }
-
-    handleTaskSearch = (tasks, value) => {
-        this.setState({
-            tasks: tasks,
-            text: value
-        })
-    }
-
-    handleTaskSort = (tasks, value) => {
-        this.setState({
-            tasks: tasks,
-            text: value
-        });
+    }    
+    
+    handleTaskUpdate = (states, staticArr=this.staticTasks) => {
+        this.setState(states);
+        this.staticTasks = staticArr;
     }
 
     render(){
@@ -87,20 +35,23 @@ class Main extends React.Component {
                     <SearchBar 
                         value={this.state.text}
                         tasks={this.state.tasks}
-                        onTaskSearch={this.handleTaskSearch}
+                        onTaskUpdate={this.handleTaskUpdate}
                         static={this.staticTasks}
                     />
-                    {/* <Toggle 
+                    <Toggle 
                         tasks={this.state.tasks}
                         static={this.staticTasks}    
-                        onTaskSort={this.handleTaskSort}
-                    /> */}
-                    <ElemList 
-                        tasks={this.state.tasks}
-                        onTaskDelete={this.handleTaskDelete}
-                        onTaskChange={this.handleTaskChange}
+                        onTaskUpdate={this.handleTaskUpdate}
                     />
-                    <Add onTaskAdd={this.handleTaskAdd} />
+                    <ElemList 
+                        static={this.staticTasks}  
+                        tasks={this.state.tasks}                        
+                        onTaskUpdate={this.handleTaskUpdate}
+                    />
+                    <Add                 
+                        static={this.staticTasks}        
+                        onTaskUpdate={this.handleTaskUpdate}
+                    />
                 </div>
                 
             </div>

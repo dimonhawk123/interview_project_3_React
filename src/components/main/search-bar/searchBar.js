@@ -9,7 +9,10 @@ export default class SearchBar extends React.Component {
             item.text.includes(event.target.value)
         );
 
-        this.props.onTaskSearch(result, event.target.value);
+        this.props.onTaskUpdate({
+            tasks: result, 
+            text: event.target.value
+        });
 
     }
 
@@ -21,7 +24,7 @@ export default class SearchBar extends React.Component {
                     value={this.props.value} 
                     placeholder="Поиск задач"
                     onChange={this.handleTaskSearch}
-                    />
+                />
             </div>
         );
     }
