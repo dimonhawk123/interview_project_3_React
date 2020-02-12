@@ -2,6 +2,7 @@ import React from 'react';
 import Add from './add-field/addElem';
 import ElemList from './elem-list/elemList';
 import SearchBar from './search-bar/searchBar';
+import Toggle from './toggle-bar/toggleBar';
 
 class Main extends React.Component { 
     constructor(props) {
@@ -32,7 +33,8 @@ class Main extends React.Component {
         this.staticTasks = this.staticTasks.concat(elem);
         console.log(this.staticTasks);
         this.setState({
-            tasks: this.staticTasks
+            tasks: this.staticTasks,
+            text: ''
         })        
     }
 
@@ -70,6 +72,13 @@ class Main extends React.Component {
         })
     }
 
+    handleTaskSort = (tasks, value) => {
+        this.setState({
+            tasks: tasks,
+            text: value
+        });
+    }
+
     render(){
         return(
             <div>
@@ -81,6 +90,11 @@ class Main extends React.Component {
                         onTaskSearch={this.handleTaskSearch}
                         static={this.staticTasks}
                     />
+                    {/* <Toggle 
+                        tasks={this.state.tasks}
+                        static={this.staticTasks}    
+                        onTaskSort={this.handleTaskSort}
+                    /> */}
                     <ElemList 
                         tasks={this.state.tasks}
                         onTaskDelete={this.handleTaskDelete}
