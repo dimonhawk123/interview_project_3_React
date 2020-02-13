@@ -54,6 +54,7 @@ export default class Toggle extends React.Component {
         return(
             <div>
                 <button onClick={() => this.sort('isDone')}>Сортировка по завершенным</button>
+                <button onClick={() => this.sort('isDone')}>Сортировка по избранным</button>
                 <button onClick={this.reset}>Сброс</button>
             </div>
         );

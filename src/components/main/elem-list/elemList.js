@@ -23,6 +23,14 @@ class ElemList extends React.Component {
         });
     }
 
+    handleTaskSetups = (changes, index) => {
+        let arr = this.props.tasks;
+        arr[index] = changes;
+        this.props.onTaskUpdate({
+            tasks: arr,
+        });
+    }
+
     render() {
 
         const elems = this.props.tasks;
@@ -35,6 +43,7 @@ class ElemList extends React.Component {
                 index={index} 
                 onTaskDelete={this.handleTaskDelete}
                 onTaskChange={this.handleTaskChange}    
+                onTaskSetups={this.handleTaskSetups}
             />
         )
 
