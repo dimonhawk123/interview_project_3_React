@@ -92,12 +92,18 @@ class Elem extends React.Component {
         return(
             <div 
                 className="elem"
-                style={{position: 'relative', marginBottom:'40px'}}>
+                style={{position: 'relative', marginBottom:'20px'}}>
                 <div>
                     <span >{text}</span>               
-                    <button onClick={this.handleTaskDone}>{textBtn}</button>
-                    <button onClick={this.handleTaskDelete}>Удалить</button>
-                    <button onClick={this.blockAppear}>Настройка</button>
+                    <button 
+                        className="button"
+                        onClick={this.handleTaskDone}>{textBtn}</button>
+                    <button
+                        className="button"
+                        onClick={this.handleTaskDelete}>Удалить</button>
+                    <button 
+                        className="button"
+                        onClick={this.blockAppear}>Настройка</button>
                     <br />
                     {this.props.task.note.length > 0 && 
                         <span onClick={this.noteAppear}>

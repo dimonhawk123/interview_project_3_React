@@ -37,7 +37,10 @@ class Additional extends React.Component {
                     type="text" 
                     name="addField" 
                     placeholder="Введите задачу" />
-                <button>Добавить</button>
+                <button
+                    className="button button_add" >
+                    Добавить
+                </button>
             </form>
         );
     }
