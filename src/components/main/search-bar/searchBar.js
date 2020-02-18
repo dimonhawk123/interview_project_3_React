@@ -3,71 +3,22 @@ import React from 'react';
 export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
-        // this.type = {
-        //     job: false,
-        //     family: false,
-        //     study: false
-        // };
+        // выбранные категории
         this.checkbox = [];
-
     }
 
+    // обработка поля поиска
+    // передача введенных значений 
     handleTaskSearch = (event) => {
-
-        // let tasks = this.props.static;
-        // let result = tasks.filter(item =>
-        //     item.text.includes(event.target.value)
-        // );
-
         this.props.onTaskUpdate({
             tasks: this.props.tasks,
             text: event.target.value
         });
-
     }
-
-    // handleTaskSearch = (event) => {
-
-    //     let tasks = this.props.static;
-    //     let result = tasks.filter(item =>
-    //         item.text.includes(event.target.value)
-    //     );
-
-    //     this.props.onTaskUpdate({
-    //         tasks: result, 
-    //         text: event.target.value
-    //     });
-
-    // }
-
-    // handleTaskToggle = (event) => {
-    //     let type = event.target.value; 
-
-    //     if (!this.type[type]) {
-    //         this.checkbox.push(type);
-    //     } else {
-    //         this.checkbox.splice(this.checkbox.findIndex(item=>item === type),1);
-    //     }
-
-    //     let tasks = this.props.tasks;
-    //     let result = tasks.filter(item =>
-    //         item.text.includes(event.target.value)
-    //     );
-
-
-    //     this.type[type] = !this.type[type];
-        
-
-    //     this.props.onTaskUpdate({
-    //         tasks: result, 
-    //         text: event.target.value
-    //     });
-        
-    // }
-
+    
+    // добавление/удаление категорий для поиска 
     handleCheckBox = (event) => {
-        let value = event.target.value;
-        // let checked = this.props.isChecked.value;
+        let value = event.target.value;       
         if (event.target.checked) {
             this.checkbox.push(value);            
         } else {
@@ -75,15 +26,12 @@ export default class SearchBar extends React.Component {
             this.checkbox.splice(index, 1);
         }
         this.props.onTaskUpdate({
-            checkbox: this.checkbox,
-            // isChecked: {
-            //     value: !checked
-            // }            
+            checkbox: this.checkbox,                      
         })
     } 
 
+    // изменения состояния checkbox "избранное"
     handleFavorite= (event) => {
-
         this.props.onTaskUpdate({
             favorite: event.target.checked              
         })
@@ -93,21 +41,36 @@ export default class SearchBar extends React.Component {
 
         return(
             <div>
-                <input type="text" 
+                <input 
+                    name="searchField"
+                    type="text" 
                     value={this.props.value} 
                     placeholder="Поиск задач"
                     onChange={this.handleTaskSearch}
                 />
-                <input type="checkbox" value="family" onChange={this.handleCheckBox}
-                    // checked = {this.props.isChecked.family}
+                <input 
+                    name="familyCheckbox"
+                    type="checkbox"
+                    value="family" 
+                    onChange={this.handleCheckBox}
                 /> Семья 
-                <input type="checkbox" value="job" onChange={this.handleCheckBox} 
-                    //checked = {this.props.isChecked.job}
+                <input 
+                    name="jobCheckbox"
+                    type="checkbox" 
+                    value="job" 
+                    onChange={this.handleCheckBox} 
                 /> Работа
-                <input type="checkbox" value="study" onChange={this.handleCheckBox}
-                    //checked = {this.props.isChecked.study}
+                <input 
+                    name="studyCheckbox"
+                    type="checkbox" 
+                    value="study" 
+                    onChange={this.handleCheckBox}
                 /> Учёба
-                <input type="checkbox" value="fav" onChange={this.handleFavorite} 
+                <input 
+                    name="favoriteCheckbox"
+                    type="checkbox" 
+                    value="fav" 
+                    onChange={this.handleFavorite} 
                     checked={this.props.fav}    
                 /> Избранное
             </div>

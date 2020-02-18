@@ -4,74 +4,36 @@ export default class Weather extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            weather: {},
-            visibleBtn : true
-            // imgSrc: ''
-        }
-        // this.error = '';
-        // this.data = '';
-        // this.lat = 0;
-        // this.lon = 0;
-    }
-
-    // async searchPos() {      
-    //     let myLocation = function(position) {
-    //         let lat = position.coords.latitude;
-    //         let lon = position.coords.longitude;        
-    //         console.log(lat, lon);
-    //         return [lat,lon];
-            
-    //     }   
-
-    //     let promise = new Promise((resolve, reject) => {
-    //         resolve(navigator.geolocation.getCurrentPosition(myLocation));
-    //     })
-
-    //     let result = await promise;    
-    //     console.log(result);
-    // }
-
-    
-    // var getPosition = function (options) {
-    //     return new Promise(function (resolve, reject) {
-    //       navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    //     });
-    //   }
-      
-    //   getPosition()
-    //     .then((position) => {
-    //       console.log(position);
-    //     })
-    //     .catch((err) => {
-    //       console.error(err.message);
-    //     });
-
-    
+            weather: {},            // информация о погоде
+            visibleBtn : true       // видимость кнопки погоды
+        }        
+    }    
 
     message = async (lat, lon) => {           
         let info = {}
+        // запрос погоды по координатам
         let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=fe8e6afa1048f31c27cad99df09ca475&lang=ru&units=metric`); 
-        if (response.ok) {   
+        if (response.ok) {  
+            // ответ 
             let data = await response.json();
-            console.log(data);
-            let img = data.weather[0].icon;
-            // console.log(img);
+            
+            let img = data.weather[0].icon; 
+            // запрос изображения           
             let responseImg = await fetch(`http://openweathermap.org/img/wn/${img}@2x.png`);
+            // ответ 
             let blob = await responseImg.blob();
             let src = URL.createObjectURL(blob);
-            // console.log(src);
-            // this.setState({
-            //     imgSrc: src
-            // });
+            // информация о погоде 
             info = {
-                city: data.name,
-                temp: data.main.temp,
-                description: data.weather.description,
-                humidity: data.main.humidity,
-                pressure: Math.floor((data.main.pressure*100)/133.3224),
-                wind: data.wind.speed,
-                imgSrc: src
-            }          
+                city: data.name,                                            // название города
+                temp: data.main.temp,                                       // температура в градусах цельсия
+                description: data.weather.description,                      // описание погоды 
+                humidity: data.main.humidity,                               // влажность, %
+                pressure: Math.floor((data.main.pressure*100)/133.3224),    // давление, мм.рт.ст
+                wind: data.wind.speed,                                      // скорость ветра, м/с
+                imgSrc: src                                                 // ссылка на изображение
+            }   
+            // обновление состояния        
             this.setState({
                 weather: info,
                 visibleBtn: false
@@ -82,32 +44,31 @@ export default class Weather extends React.Component {
                 weather: {
                     error: 'Ошибка ' + response.status
                 }
-            })
-            // this.error = 'Ошибка ' + response.status;
+            })            
         }
     }
 
-    getWeather = () => {
-        
-        // this.getPosition();
-        // this.message;
-        // console.log(this.lat);
+    // получение информации о погоде в вашем городе
+    getWeather = () => {        
+        // создаём промис 
         let getPosition = function() {
             return new Promise(function (resolve, reject) {
-              navigator.geolocation.getCurrentPosition(resolve, reject);
+                // получаем координаты
+                navigator.geolocation.getCurrentPosition(resolve, reject);
             });
         }
           
-          getPosition()
-            .then((position) => {
-                let lat = position.coords.latitude;
-                let lon = position.coords.longitude;        
-                console.log(lat, lon);
-                this.message(lat, lon);
-            })
-            .catch((err) => {
-                console.error(err.message);
-            });
+        getPosition()
+        .then((position) => {
+            // получаем координаты
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude; 
+            // запрос погоды по координатам  
+            this.message(lat, lon);
+        })
+        .catch((err) => {
+            console.error(err.message);
+        });
 
     }
 
@@ -126,7 +87,8 @@ export default class Weather extends React.Component {
                 <div>
                     <img src={weather.imgSrc} />
                     {weather.temp} <br />
-                    {weather.pressure}
+                    {weather.pressure} <br />
+                    {weather.city}
                     {weather.error}
                 </div>
             </div>

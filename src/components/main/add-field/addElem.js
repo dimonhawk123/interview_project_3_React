@@ -1,29 +1,26 @@
 import React from 'react';
 
-class Additional extends React.Component {
-    constructor(props) {
-        super(props);
-        // this.tasks = this.props.static;
-    }
+class Additional extends React.Component {    
 
+    // добавляем задачу 
     handleTaskAdd = (event) => {
         event.preventDefault();
         let tasks = this.props.tasks;
         let textField = event.target.elements.addField.value;
         if (textField !== '') {   
-
+            // создаем макет для задачи 
             const elem = {
-                text: textField,
-                id: Date.now() + Math.floor(Math.random() * 9),
-                category: '',
-                fav: false,
-                isDone: false,
-                note: '',
-                time: ''
+                text: textField,                                    // текст задачи
+                id: Date.now() + Math.floor(Math.random() * 9),     // id задачи
+                category: '',                                       // категория, к которой задача относится
+                fav: false,                                         // пометка как избранное
+                isDone: false,                                      // пометка как выполненное
+                note: '',                                           // заметки задачи
+                time: ''                                            // дата, до которой нужно выполнить задачу
             }      
-            
+            // объединяем с уже существующими задачами 
             tasks = tasks.concat(elem);
-                            
+            // обновляем состояние                  
             this.props.onTaskUpdate({
                 tasks: tasks,
                 text: ''

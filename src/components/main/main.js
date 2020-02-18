@@ -9,50 +9,27 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tasks: [],
-            text: '',
-            sorted: {},
-            checkbox: [],
-            // isChecked: {
-            //     family: false,
-            //     job: false,
-            //     study: false
-            // },
-            favorite: false 
-            
+            tasks: [],          // массив объектов - созданных задач
+            text: '',           // текст в поле поиска
+            sorted: {},         // типо сортировки
+            checkbox: [],       // массив категорий для выбора задач
+            favorite: false     // выбор избранных задач
         }
-        
-        // this.data = '';
-        // this.message();
     }
-
     
-    // message = async () => {
-    //     let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=fe8e6afa1048f31c27cad99df09ca475`); 
-    //     if (response.ok) {   
-    //         console.log(response);
-    //         this.data = await response.json();
-    //         console.log(this.data);
-    //     } 
-    // }
-    // getData = () => {
-    //     this.message();
-    // }
-
-
-    
+    // при монтировании компонента
+    // получаем все задачи из localstorage, 
+    // которые сохраняются с прошлого сеанса 
     componentDidMount() {
         let states = localStorage.getItem('states');
         let state = JSON.parse(states);
-        console.log(state);
         let data = state === null ? [] : state;
         this.setState({
-            // tasks: state
             tasks: data
         });        
     }
     
-
+    // получаем сегодняшнюю дату 
     getDate = () => {
         let date = new Date();
         let year = date.getFullYear();
@@ -61,24 +38,18 @@ class Main extends React.Component {
         return `${day}.${month}.${year}`;
     }    
     
-    // handleTaskUpdate = (states, staticArr=this.staticTasks) => {
-    //     this.setState(states);
-    //     this.staticTasks = staticArr;
-    // }
-
+    // при обновлении компонента
+    // записываем в localstorage текущие задачи 
     componentDidUpdate() {
-        console.log(this.state.tasks);
         localStorage.setItem('states', JSON.stringify(this.state.tasks));  
     }  
 
-    handleTaskUpdate = (states) => {
-        
-        this.setState(states);             
-        
+    // обновление состояния 
+    handleTaskUpdate = (states) => {        
+        this.setState(states);      
     }
 
-    render(){
-         
+    render(){         
         return(
             <div>
                 <div>
@@ -86,37 +57,27 @@ class Main extends React.Component {
                     <SearchBar 
                         value={this.state.text}
                         tasks={this.state.tasks}
-                        fav={this.state.favorite}
-                        isChecked={this.state.isChecked}
-                        // checkbox={this.state.checkbox}
-                        onTaskUpdate={this.handleTaskUpdate}
-                        // static={this.staticTasks}
+                        fav={this.state.favorite}   
+                        onTaskUpdate={this.handleTaskUpdate}                        
                     />
                     <Toggle 
                         tasks={this.state.tasks}
-                        isChecked={this.state.isChecked}
-                        // static={this.staticTasks}   
-                        // sorted={this.state.sorted} 
                         onTaskUpdate={this.handleTaskUpdate}
                     />
-                    <ElemList 
-                        // static={this.staticTasks}  
-                        fav={this.state.favorite}
-                        isChecked={this.state.isChecked}
+                    <ElemList                         
+                        fav={this.state.favorite}                        
                         checkbox={this.state.checkbox}
                         sorted={this.state.sorted} 
                         value={this.state.text}
                         tasks={this.state.tasks}                        
                         onTaskUpdate={this.handleTaskUpdate}
                     />
-                    <Add                 
-                        // static={this.staticTasks}       
+                    <Add      
                         tasks={this.state.tasks} 
                         onTaskUpdate={this.handleTaskUpdate}
                     />
                     <Weather />
-                </div>
-                
+                </div>                
             </div>
         );
     }

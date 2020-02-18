@@ -2,33 +2,18 @@ import React from 'react';
 
 export default class CategoryBlock extends React.Component {
 
-
-    // handleChangeCategory = (event) => {
-    //     let task = this.props.task;
-    //     task.category = event.target.value; 
-    //     this.props.onTaskSetups(task, this.props.id);
-    // }
-
+    // изменение поля "избранное"
     handleChangeFavorite = (event) => {
         let task1 = this.props.task;
         task1.fav = event.target.checked; 
         this.props.onTaskSetups(task1, this.props.id);
     }
 
-    // handleChangeNote = (event) => {
-    //     let note = this.props.task;
-    //     note.note = event.target.value;
-    //     this.props.onTaskSetups(note, this.props.id);
-    // }
-
-    // handleChangeTime = (event) => {
-    //     let time = this.props.task;
-    //     time.time = event.target.value;
-    //     this.props.onTaskSetups(time, this.props.id);
-    // }
-
+    // изменение полей задачи 
+    // в зависимости от имени элемента формы
     handleChangeTask = (event) => {
         let task = this.props.task;
+        // имя сработавшего элемента формы
         let name = event.target.name;
         task[name] = event.target.value;
         this.props.onTaskSetups(task, this.props.id);
@@ -46,6 +31,7 @@ export default class CategoryBlock extends React.Component {
                 </select>
                 <br />
                 <input 
+                    name="favorite"
                     type="checkbox" 
                     onChange={this.handleChangeFavorite} 
                     checked={this.props.task.fav}
