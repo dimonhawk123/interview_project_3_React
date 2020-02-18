@@ -90,7 +90,9 @@ class Elem extends React.Component {
                         />
         
         return(
-            <div style={{position: 'relative', marginBottom:'40px'}}>
+            <div 
+                className="elem"
+                style={{position: 'relative', marginBottom:'40px'}}>
                 <div>
                     <span >{text}</span>               
                     <button onClick={this.handleTaskDone}>{textBtn}</button>

@@ -4,6 +4,9 @@ import ElemList from './elem-list/elemList';
 import SearchBar from './search-bar/searchBar';
 import Toggle from './toggle-bar/toggleBar';
 import Weather from './weather/weather';
+import './main.scss';
+import './searchBar.scss';
+import './toggle-bar/toggle.scss';
 
 class Main extends React.Component { 
     constructor(props) {
@@ -51,19 +54,24 @@ class Main extends React.Component {
 
     render(){         
         return(
-            <div>
-                <div>
+            <main className="main">
+                <div className="main__title title">
                     Задачи на {this.getDate()}
+                </div> 
+                <div className="main__searchBar searchBar">
                     <SearchBar 
                         value={this.state.text}
                         tasks={this.state.tasks}
                         fav={this.state.favorite}   
                         onTaskUpdate={this.handleTaskUpdate}                        
                     />
+                </div>
+                <div className="main__toggle toggleBar">
                     <Toggle 
                         tasks={this.state.tasks}
                         onTaskUpdate={this.handleTaskUpdate}
                     />
+                </div>
                     <ElemList                         
                         fav={this.state.favorite}                        
                         checkbox={this.state.checkbox}
@@ -76,9 +84,8 @@ class Main extends React.Component {
                         tasks={this.state.tasks} 
                         onTaskUpdate={this.handleTaskUpdate}
                     />
-                    <Weather />
-                </div>                
-            </div>
+                    <Weather />                               
+            </main>
         );
     }
 }

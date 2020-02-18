@@ -42,31 +42,36 @@ export default class SearchBar extends React.Component {
         return(
             <div>
                 <input 
+                    className="inputSearch"
                     name="searchField"
                     type="text" 
                     value={this.props.value} 
                     placeholder="Поиск задач"
                     onChange={this.handleTaskSearch}
                 />
-                <input 
+                <input        
+                    className="inputCheckBox"             
                     name="familyCheckbox"
                     type="checkbox"
                     value="family" 
                     onChange={this.handleCheckBox}
-                /> Семья 
+                /> Семья
                 <input 
+                    className="inputCheckBox"
                     name="jobCheckbox"
                     type="checkbox" 
                     value="job" 
                     onChange={this.handleCheckBox} 
                 /> Работа
                 <input 
+                    className="inputCheckBox"
                     name="studyCheckbox"
                     type="checkbox" 
                     value="study" 
                     onChange={this.handleCheckBox}
                 /> Учёба
                 <input 
+                    className="inputCheckBox"
                     name="favoriteCheckbox"
                     type="checkbox" 
                     value="fav" 

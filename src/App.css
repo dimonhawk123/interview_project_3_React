@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 } */
+
+.App {
+  background: #f5f7fa;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.Wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}

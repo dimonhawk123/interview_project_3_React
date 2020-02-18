@@ -32,7 +32,11 @@ class Additional extends React.Component {
     render() {
         return(
             <form onSubmit={this.handleTaskAdd}>
-                <input type="text" name="addField" placeholder="Введите задачу" />
+                <input 
+                    className="inputSearch"
+                    type="text" 
+                    name="addField" 
+                    placeholder="Введите задачу" />
                 <button>Добавить</button>
             </form>
         );
