@@ -72,6 +72,7 @@ class Main extends React.Component {
                         onTaskUpdate={this.handleTaskUpdate}
                     />
                 </div>
+                <div className="main__elem elements">
                     <ElemList                         
                         fav={this.state.favorite}                        
                         checkbox={this.state.checkbox}
@@ -80,11 +81,16 @@ class Main extends React.Component {
                         tasks={this.state.tasks}                        
                         onTaskUpdate={this.handleTaskUpdate}
                     />
+                </div>
+                <div className="main__add ">
                     <Add      
                         tasks={this.state.tasks} 
                         onTaskUpdate={this.handleTaskUpdate}
                     />
-                    <Weather />                               
+                </div>
+                <div className="main__weather weather">
+                    <Weather />      
+                </div>                         
             </main>
         );
     }

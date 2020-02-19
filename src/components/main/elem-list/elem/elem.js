@@ -90,34 +90,46 @@ class Elem extends React.Component {
                         />
         
         return(
-            <div 
-                className="elem"
-                style={{position: 'relative', marginBottom:'20px'}}>
-                <div>
-                    <span >{text}</span>               
-                    <button 
-                        className="button"
-                        onClick={this.handleTaskDone}>{textBtn}</button>
-                    <button
-                        className="button"
-                        onClick={this.handleTaskDelete}>Удалить</button>
-                    <button 
-                        className="button"
-                        onClick={this.blockAppear}>Настройка</button>
-                    <br />
-                    {this.props.task.note.length > 0 && 
-                        <span onClick={this.noteAppear}>
-                            Заметка
-                        </span>
-                    }
-                    {this.state.textarea && <div>{this.props.task.note}</div>}
-                    {this.props.task.time.length > 0 && lateDate}
+            <section 
+                className="elem elements__position"
+                style={{position: 'relative'}}>
+                <div className="elem__content">
+                    <div className="elem__flex">
+                        <div className="elem__action">{text}</div>   
+                        <div className="elem__button">
+                            <button 
+                                className="button elem__position"
+                                onClick={this.handleTaskDone}>{textBtn}</button>
+                            <button
+                                className="button elem__position"
+                                onClick={this.handleTaskDelete}>Удалить</button>
+                            <button 
+                                className="button elem__position"
+                                onClick={this.blockAppear}>Настройка
+                            </button>
+                        </div>
+                    </div>
+                    <div className="elem__flex" style={{marginTop: '7px'}}>
+                        {this.props.task.note.length > 0 && 
+                            <div 
+                                className="elem__noteBlock"
+                                >
+                                <span 
+                                    className="elem__note"
+                                    onClick={this.noteAppear}>Заметка...</span>
+                            </div>
+                        }
+                        {this.props.task.time.length > 0 && <div className="elem__date">{lateDate}</div>}
+                    </div>
+
+                    {this.state.textarea && <div className="elem__noteText">{this.props.task.note}</div>}
+                    
 
                 </div>
-                <div style={{position: 'absolute', left: '500px', top: '0px'}}>
+                <div className="tools">
                     {this.state.visibleTools && block}                    
                 </div>
-            </div>
+            </section>
         );
     }
 

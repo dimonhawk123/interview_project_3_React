@@ -79,15 +79,17 @@ export default class Weather extends React.Component {
                 Неплохо было бы прогуляться!)
                 <br />
                 {this.state.visibleBtn && 
-                    <button onClick={this.getWeather}>
+                    <button 
+                        className="button"
+                        onClick={this.getWeather}>
                         Узнать погоду в вашем городе!
                     </button>
                 }
                 
                 <div>
                     <img src={weather.imgSrc} />
-                    {weather.temp} <br />
-                    {weather.pressure} <br />
+                    {weather.temp} 
+                    {weather.pressure} 
                     {weather.city}
                     {weather.error}
                 </div>
