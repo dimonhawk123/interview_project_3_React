@@ -37,6 +37,9 @@ export default class SearchBar extends React.Component {
         })
     }
 
+    // study: '#ff00e9',
+    // job: '#4d00ff',
+    // family: '#05ef5a'
     render() {
 
         return(
@@ -55,21 +58,21 @@ export default class SearchBar extends React.Component {
                     type="checkbox"
                     value="family" 
                     onChange={this.handleCheckBox}
-                /> Семья
+                /> <span style={{borderBottom: '2px solid #05ef5a'}}>Семья</span>
                 <input 
                     className="inputCheckBox"
                     name="jobCheckbox"
                     type="checkbox" 
                     value="job" 
                     onChange={this.handleCheckBox} 
-                /> Работа
+                /> <span style={{borderBottom: '2px solid #4d00ff'}}>Работа</span>
                 <input 
                     className="inputCheckBox"
                     name="studyCheckbox"
                     type="checkbox" 
                     value="study" 
                     onChange={this.handleCheckBox}
-                /> Учёба
+                /> <span style={{borderBottom: '2px solid #ff00e9'}}>Учёба</span>
                 <input 
                     className="inputCheckBox"
                     name="favoriteCheckbox"
@@ -77,7 +80,7 @@ export default class SearchBar extends React.Component {
                     value="fav" 
                     onChange={this.handleFavorite} 
                     checked={this.props.fav}    
-                /> Избранное
+                /> <span>Избранное</span>
             </div>
         );
     }

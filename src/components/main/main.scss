@@ -4,8 +4,11 @@
         margin-bottom: 15px;
     }
 
-    &__searchBar, &__toggle, &__add {
+    &__searchBar, &__toggle, &__add{
         margin-bottom: 15px;
+    }
+    &__weather {
+        padding-bottom: 20px;
     }
 }
 
@@ -43,6 +46,14 @@
     font-weight: 300;
     font-size: 17px;
     // color: white;
+
+     &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+        border-color: #3f669f;
+    }
 
     &_add {
         // font-size: 15px;
@@ -118,4 +129,36 @@ input, select {
 .weather {
     font-weight: 300;
     font-size: 20px; 
+
+    &__info {
+        background-color: white;
+        display: inline-block;
+        box-shadow: 2px 2px 2px #d4d8dc;
+        padding: 10px;
+    }
+    &__city {
+        font-size: 25px;
+    }
+    &__temp {
+        font-size: 35px;
+        margin-right: 15px;
+
+    }
+    &__img {
+        
+    }
+    &__flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    &__description {
+        margin-bottom: 10px;
+        font-size: 23px;
+    }
+    
+}
+
+.image {
+    height: 30px;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import CategoryBlock from './info-bar/categoryBlock';
+import star from './star.png';
 
 class Elem extends React.Component {
     constructor(props) {
@@ -9,6 +10,13 @@ class Elem extends React.Component {
             textarea: false,                         // видимость блока заметок задачи
             time: Math.floor(Date.now()/1e3)         // текущее время 
         }
+        // цвета разных категорий для рамки задачи
+        this.color = {
+            study: '#ff00e9',
+            job: '#4d00ff',
+            family: '#05ef5a'
+        }
+        this.late = false;
     }
 
     // обработчик кнопки удаления задачи
@@ -59,6 +67,7 @@ class Elem extends React.Component {
 
     // сравниваем заданное время задачи с текущим временем 
     compareTime() {
+        this.late = false;
         let late = '';
         let timeStr = this.props.task.time;
         let index = timeStr.indexOf('T');
@@ -68,6 +77,7 @@ class Elem extends React.Component {
         let timestamp = Date.parse(timeStr)/1000;
         // если время задачи меньше текущего 
         if (timestamp < this.state.time) {
+            this.late = true;
             late = ' - просрочено';
         }
         return 'Сделать до: ' + date + ' ' + clock + late; 
@@ -75,6 +85,7 @@ class Elem extends React.Component {
 
     render() {
         const lateDate = this.compareTime();
+        const lateColor = this.late ? 'red' : '';
         const done = this.props.task.isDone;
         const text = done ? 
             <span style={{textDecoration: 'line-through'}}>{this.props.task.text}</span> :
@@ -92,10 +103,11 @@ class Elem extends React.Component {
         return(
             <section 
                 className="elem elements__position"
-                style={{position: 'relative'}}>
+                style={{position: 'relative', borderColor: this.color[this.props.task.category]}}>
                 <div className="elem__content">
                     <div className="elem__flex">
                         <div className="elem__action">{text}</div>   
+                        {this.props.task.fav && <div><img className="image" src={star} alt="starIcon" /></div>}
                         <div className="elem__button">
                             <button 
                                 className="button elem__position"
@@ -119,7 +131,12 @@ class Elem extends React.Component {
                                     onClick={this.noteAppear}>Заметка...</span>
                             </div>
                         }
-                        {this.props.task.time.length > 0 && <div className="elem__date">{lateDate}</div>}
+                        {this.props.task.time.length > 0 && 
+                            <div 
+                                style={{color: lateColor}}
+                                className="elem__date">
+                                    {lateDate}
+                            </div>}
                     </div>
 
                     {this.state.textarea && <div className="elem__noteText">{this.props.task.note}</div>}

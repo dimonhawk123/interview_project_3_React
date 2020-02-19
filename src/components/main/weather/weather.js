@@ -27,12 +27,13 @@ export default class Weather extends React.Component {
             info = {
                 city: data.name,                                            // название города
                 temp: data.main.temp,                                       // температура в градусах цельсия
-                description: data.weather.description,                      // описание погоды 
+                description: data.weather[0].description,                   // описание погоды 
                 humidity: data.main.humidity,                               // влажность, %
                 pressure: Math.floor((data.main.pressure*100)/133.3224),    // давление, мм.рт.ст
                 wind: data.wind.speed,                                      // скорость ветра, м/с
                 imgSrc: src                                                 // ссылка на изображение
             }   
+            
             // обновление состояния        
             this.setState({
                 weather: info,
@@ -72,8 +73,18 @@ export default class Weather extends React.Component {
 
     }
 
+    description() {
+        
+        if (Object.keys(this.state.weather).length !== 0) {
+            return this.state.weather.description[0].toUpperCase() + this.state.weather.description.slice(1);
+        }
+        
+    }
+
     render() {
         const weather = this.state.weather;
+        const sign = weather.temp > 0 ? '+' : '';
+        const description = this.description();
         return(
             <div>
                 Неплохо было бы прогуляться!)
@@ -86,13 +97,37 @@ export default class Weather extends React.Component {
                     </button>
                 }
                 
-                <div>
-                    <img src={weather.imgSrc} />
-                    {weather.temp} 
-                    {weather.pressure} 
-                    {weather.city}
-                    {weather.error}
-                </div>
+                {Object.keys(this.state.weather).length !== 0 &&
+                    <div className="weather__info">
+                        <div className="weather__city">{weather.city}</div>
+                        <div className="weather__flex">
+                            <div className="weather__temp">{sign}{weather.temp} </div>
+                            <div className="weather__img"><img src={weather.imgSrc} /></div>
+                        </div>
+                        <div className="weather__description">{description}</div>
+                        
+                        
+                    
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Скорость ветра</td>
+                                    <td>{weather.wind} м/с</td>
+                                </tr>
+                                <tr>
+                                    <td>Давление</td>
+                                    <td>{weather.pressure} мм.рт.ст</td>
+                                </tr>
+                                <tr>
+                                    <td>Влажность</td>
+                                    <td> {weather.humidity} %</td>
+                                </tr>
+                            </thead>
+                        </table>
+                        {weather.error}
+                    </div>
+                }
             </div>
         ); 
     }
