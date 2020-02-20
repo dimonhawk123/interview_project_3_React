@@ -75,7 +75,7 @@ export default class Toggle extends React.Component {
         const favBtnDown = this.color.fav.true;
 
         return(
-            <div>
+            <div className="toggleBar__flex">
                 <button 
                     className="toggleBar__position button"
                     onClick={() => this.sortType('isDone')}>

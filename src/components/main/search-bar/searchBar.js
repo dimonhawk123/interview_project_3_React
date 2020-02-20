@@ -46,44 +46,56 @@ export default class SearchBar extends React.Component {
     render() {
 
         return(
-            <div>
-                <input 
-                    className="inputSearch"
-                    name="searchField"
-                    type="text" 
-                    value={this.props.value} 
-                    placeholder="Поиск задач"
-                    onChange={this.handleTaskSearch}
-                />
-                <input        
-                    className="inputCheckBox"             
-                    name="familyCheckbox"
-                    type="checkbox"
-                    value="family" 
-                    onChange={this.handleCheckBox}
-                /> <span style={{borderBottom: this.color.family}}>Семья</span>
-                <input 
-                    className="inputCheckBox"
-                    name="jobCheckbox"
-                    type="checkbox" 
-                    value="job" 
-                    onChange={this.handleCheckBox} 
-                /> <span style={{borderBottom: this.color.job}}>Работа</span>
-                <input 
-                    className="inputCheckBox"
-                    name="studyCheckbox"
-                    type="checkbox" 
-                    value="study" 
-                    onChange={this.handleCheckBox}
-                /> <span style={{borderBottom: this.color.study}}>Учёба</span>
-                <input 
-                    className="inputCheckBox"
-                    name="favoriteCheckbox"
-                    type="checkbox" 
-                    value="fav" 
-                    onChange={this.handleFavorite} 
-                    checked={this.props.fav}    
-                /> <span>Избранное</span>
+            <div className="searchBar__flex">
+                <div className="searchBar__searchField">
+                    <input 
+                        className="inputSearch"
+                        name="searchField"
+                        type="text" 
+                        value={this.props.value} 
+                        placeholder="Поиск задач"
+                        onChange={this.handleTaskSearch}
+                    />
+                </div>
+                <div className="searchBar__checkbox">
+                    <div className="searchBar__checkboxElem">
+                        <input        
+                            className="inputCheckBox inputCheckBox_first"             
+                            name="familyCheckbox"
+                            type="checkbox"
+                            value="family" 
+                            onChange={this.handleCheckBox}
+                        /> <span style={{borderBottom: this.color.family}}>Семья</span>
+                    </div>
+                    <div className="searchBar__checkboxElem">
+                        <input 
+                            className="inputCheckBox"
+                            name="jobCheckbox"
+                            type="checkbox" 
+                            value="job" 
+                            onChange={this.handleCheckBox} 
+                        /> <span style={{borderBottom: this.color.job}}>Работа</span>
+                    </div>
+                    <div className="searchBar__checkboxElem">
+                        <input 
+                            className="inputCheckBox"
+                            name="studyCheckbox"
+                            type="checkbox" 
+                            value="study" 
+                            onChange={this.handleCheckBox}
+                        /> <span style={{borderBottom: this.color.study}}>Учёба</span>
+                    </div>
+                    <div className="searchBar__checkboxElem">
+                        <input 
+                            className="inputCheckBox"
+                            name="favoriteCheckbox"
+                            type="checkbox" 
+                            value="fav" 
+                            onChange={this.handleFavorite} 
+                            checked={this.props.fav}    
+                        /> <span>Избранное</span>
+                    </div>
+                </div>
             </div>
         );
     }

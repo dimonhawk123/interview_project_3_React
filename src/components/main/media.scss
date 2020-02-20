@@ -1,0 +1,72 @@
+@media(max-width: 950px) {
+    .tools__flex {
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+    .inputCheckBox_tools {
+        margin-left: 0;
+    }
+}
+
+@media(max-width: 665px) {
+    .toggleBar__flex {
+        flex-direction: column;
+    }
+    .toggleBar__position {
+        margin-right: 0;
+    }
+    .inputCheckBox_first {
+        margin-left: 0;
+    }
+    .searchBar__flex {
+        flex-direction: column;
+    }
+    .main {
+        font-size: 17px;
+    }
+    .button {
+        padding: 5px;
+        font-weight: 400;
+        font-size: 15px;
+    }
+    .inputSearch {
+        height: 32px;
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
+
+@media(max-width: 580px) {
+    .elem__button {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 400px) {
+    .elem__date {
+        font-size: 15px;
+    }
+    .searchBar__checkbox {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .inputCheckBox {
+        margin-left: 0;
+    }
+    .header {
+        font-size: 32px;
+    }
+    .title {
+        font-size: 30px;
+    }
+    .weather__city {
+        font-size: 20px;
+    }
+    .weather__temp {
+        font-size: 25px;
+    }
+    .weather__description {
+        font-size: 19px;
+    }   
+}

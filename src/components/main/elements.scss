@@ -1,0 +1,60 @@
+.elements {
+
+    &__position {
+        margin-bottom: 20px;
+    }
+}
+
+.elem {
+    background-color: white;
+    border: 1px solid #E2E5EC;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 0px #d2d6da;    
+
+    &__content {
+        border-bottom: 1px solid #E2E5EC;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+
+    &__button {        
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__position {
+        margin-left: 15px;
+    }
+    &__action {        
+        flex-grow: 1;
+        font-weight: 400;
+    }
+    &__flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    &__note {
+        font-size: 16px;
+        cursor: pointer;
+        font-style: italic;        
+    }
+    &__noteBlock {
+        flex-grow: 1;
+        margin-right: 30px;
+    }
+}
+
+.tools__flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.image {
+    height: 30px;
+}

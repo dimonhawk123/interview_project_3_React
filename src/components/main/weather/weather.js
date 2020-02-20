@@ -87,8 +87,9 @@ export default class Weather extends React.Component {
         const description = this.description();
         return(
             <div>
-                Неплохо было бы прогуляться!)
-                <br />
+                <div className="weather__title">
+                    Неплохо было бы прогуляться!)
+                </div>
                 {this.state.visibleBtn && 
                     <button 
                         className="button"
@@ -105,7 +106,7 @@ export default class Weather extends React.Component {
                             <div className="weather__img"><img src={weather.imgSrc} /></div>
                         </div>
                         <div className="weather__description">{description}</div>
-                        <table>
+                        <table className="weather__table">
                             <thead>
                                 <tr>
                                     <td>Скорость ветра</td>

@@ -6,7 +6,11 @@ import Toggle from './toggle-bar/toggleBar';
 import Weather from './weather/weather';
 import './main.scss';
 import './searchBar.scss';
-import './toggle-bar/toggle.scss';
+import './toggle.scss';
+import './elements.scss';
+import './weather.scss';
+import './media.scss';
+
 
 class Main extends React.Component { 
     constructor(props) {

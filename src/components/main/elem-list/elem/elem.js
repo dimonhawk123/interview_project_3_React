@@ -109,7 +109,10 @@ class Elem extends React.Component {
                         <div className="elem__action">
                             {text}
                         </div>   
-                        {this.props.task.fav && <div><img className="image" src={star} alt="starIcon" /></div>}
+                        {this.props.task.fav && 
+                            <div className="elem__favIcon">
+                                <img className="image" src={star} alt="starIcon" />
+                            </div>}
                         <div className="elem__button">
                             <button 
                                 className="button elem__position"

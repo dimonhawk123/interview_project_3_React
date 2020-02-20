@@ -22,8 +22,8 @@ export default class CategoryBlock extends React.Component {
     render() {
         return(
             <form>
-                <div className="tools-flex">
-                    <div className="category">
+                <div className="tools__flex">
+                    <div className="tools__category">
                         <span>Выбрать категорию: </span>
                         <select name="category" value={this.props.task.category} onChange={this.handleChangeTask}>
                             <option value="family">Семья</option>
@@ -32,9 +32,9 @@ export default class CategoryBlock extends React.Component {
                             <option value="">Ничего не выбрано</option>
                         </select>
                     </div>
-                    <div className="favorite">
+                    <div className="tools__favorite">
                         <input 
-                            className="inputCheckBox"
+                            className="inputCheckBox inputCheckBox_tools"
                             name="favorite"
                             type="checkbox" 
                             onChange={this.handleChangeFavorite} 
@@ -42,7 +42,7 @@ export default class CategoryBlock extends React.Component {
                         /> 
                         <span> Добавить в избранное</span>
                     </div>
-                    <div className="date">
+                    <div className="tools__date">
                         <span>Выбрать дату: </span>
                         <input 
                             type="datetime-local" 
