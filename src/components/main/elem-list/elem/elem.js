@@ -106,29 +106,37 @@ class Elem extends React.Component {
                 style={{position: 'relative', borderColor: this.color[this.props.task.category]}}>
                 <div className="elem__content">
                     <div className="elem__flex">
-                        <div className="elem__action">{text}</div>   
+                        <div className="elem__action">
+                            {text}
+                        </div>   
                         {this.props.task.fav && <div><img className="image" src={star} alt="starIcon" /></div>}
                         <div className="elem__button">
                             <button 
                                 className="button elem__position"
-                                onClick={this.handleTaskDone}>{textBtn}</button>
+                                onClick={this.handleTaskDone}>
+                                    {textBtn}
+                            </button>
                             <button
                                 className="button elem__position"
-                                onClick={this.handleTaskDelete}>Удалить</button>
+                                onClick={this.handleTaskDelete}>
+                                    Удалить
+                            </button>
                             <button 
                                 className="button elem__position"
-                                onClick={this.blockAppear}>Настройка
+                                onClick={this.blockAppear}>
+                                    Настройка
                             </button>
                         </div>
                     </div>
                     <div className="elem__flex" style={{marginTop: '7px'}}>
                         {this.props.task.note.length > 0 && 
                             <div 
-                                className="elem__noteBlock"
-                                >
+                                className="elem__noteBlock">
                                 <span 
                                     className="elem__note"
-                                    onClick={this.noteAppear}>Заметка...</span>
+                                    onClick={this.noteAppear}>
+                                        Заметка...
+                                </span>
                             </div>
                         }
                         {this.props.task.time.length > 0 && 
@@ -139,7 +147,12 @@ class Elem extends React.Component {
                             </div>}
                     </div>
 
-                    {this.state.textarea && <div className="elem__noteText">{this.props.task.note}</div>}
+                    {
+                        this.state.textarea && 
+                            <div className="elem__noteText">
+                                {this.props.task.note}
+                            </div>
+                    }
                     
 
                 </div>

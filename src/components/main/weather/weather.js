@@ -73,16 +73,16 @@ export default class Weather extends React.Component {
 
     }
 
-    description() {
-        
+    // первую букву описания погоды делаем заглавной 
+    description() {        
         if (Object.keys(this.state.weather).length !== 0) {
             return this.state.weather.description[0].toUpperCase() + this.state.weather.description.slice(1);
         }
-        
     }
 
     render() {
         const weather = this.state.weather;
+        // установка знака "+" при положительных температурах
         const sign = weather.temp > 0 ? '+' : '';
         const description = this.description();
         return(
@@ -105,10 +105,6 @@ export default class Weather extends React.Component {
                             <div className="weather__img"><img src={weather.imgSrc} /></div>
                         </div>
                         <div className="weather__description">{description}</div>
-                        
-                        
-                    
-
                         <table>
                             <thead>
                                 <tr>

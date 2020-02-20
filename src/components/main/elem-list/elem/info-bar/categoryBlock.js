@@ -61,9 +61,7 @@ export default class CategoryBlock extends React.Component {
                         onChange={this.handleChangeTask} 
                         value={this.props.task.note}
                     />
-                </div>
-                
-                
+                </div>    
             </form>
         );
     }

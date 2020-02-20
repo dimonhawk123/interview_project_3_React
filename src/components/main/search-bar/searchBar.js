@@ -5,6 +5,12 @@ export default class SearchBar extends React.Component {
         super(props);
         // выбранные категории
         this.checkbox = [];
+        // цвета категорий
+        this.color = {
+            study: '2px solid #ff00e9',
+            job: '2px solid #4d00ff',
+            family: '2px solid #05ef5a'
+        }
     }
 
     // обработка поля поиска
@@ -36,10 +42,7 @@ export default class SearchBar extends React.Component {
             favorite: event.target.checked              
         })
     }
-
-    // study: '#ff00e9',
-    // job: '#4d00ff',
-    // family: '#05ef5a'
+   
     render() {
 
         return(
@@ -58,21 +61,21 @@ export default class SearchBar extends React.Component {
                     type="checkbox"
                     value="family" 
                     onChange={this.handleCheckBox}
-                /> <span style={{borderBottom: '2px solid #05ef5a'}}>Семья</span>
+                /> <span style={{borderBottom: this.color.family}}>Семья</span>
                 <input 
                     className="inputCheckBox"
                     name="jobCheckbox"
                     type="checkbox" 
                     value="job" 
                     onChange={this.handleCheckBox} 
-                /> <span style={{borderBottom: '2px solid #4d00ff'}}>Работа</span>
+                /> <span style={{borderBottom: this.color.job}}>Работа</span>
                 <input 
                     className="inputCheckBox"
                     name="studyCheckbox"
                     type="checkbox" 
                     value="study" 
                     onChange={this.handleCheckBox}
-                /> <span style={{borderBottom: '2px solid #ff00e9'}}>Учёба</span>
+                /> <span style={{borderBottom: this.color.study}}>Учёба</span>
                 <input 
                     className="inputCheckBox"
                     name="favoriteCheckbox"
