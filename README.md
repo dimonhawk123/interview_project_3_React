@@ -1,29 +1,27 @@
 ## ToDo проект 
 
+Данный проект представляет собой ToDo приложение с соответствующим ему функционалом. 
 
+## Запуск проекта
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+В директории проекта необходимо прописать:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Приложение будет запущено на [http://localhost:3000](http://localhost:3000) или на другом порту, если данный занят.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+При внесении изменений в проект, страница в браузере будет обновляться, также в консоли будут видны ошибки.
+
+## Сборка проекта
+
+В директории проекта необходимо прописать:
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Собранное приложение будет помещено в папку `build`.
+Файлы будут минифицированны. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Для более подробной информации о сборке проекта можно перейти по данной [ссылке](https://facebook.github.io/create-react-app/docs/deployment).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
