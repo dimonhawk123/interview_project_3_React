@@ -92,6 +92,7 @@ class Elem extends React.Component {
             this.props.task.text;
         
         const textBtn = done ? 'Не выполнено' : 'Выполнено';
+        const setupBtn = this.state.visibleTools ? 'Закрыть' : 'Настройка'
         const block = <CategoryBlock
                             // key={this.props.id}
                             id = {this.props.id}
@@ -127,7 +128,7 @@ class Elem extends React.Component {
                             <button 
                                 className="button elem__position"
                                 onClick={this.blockAppear}>
-                                    Настройка
+                                    {setupBtn}
                             </button>
                         </div>
                     </div>

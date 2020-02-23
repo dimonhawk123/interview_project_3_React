@@ -4,13 +4,7 @@ import ElemList from './elem-list/elemList';
 import SearchBar from './search-bar/searchBar';
 import Toggle from './toggle-bar/toggleBar';
 import Weather from './weather/weather';
-import './main.scss';
-import './searchBar.scss';
-import './toggle.scss';
-import './elements.scss';
-import './weather.scss';
-import './media.scss';
-
+import './style.scss';
 
 class Main extends React.Component { 
     constructor(props) {
