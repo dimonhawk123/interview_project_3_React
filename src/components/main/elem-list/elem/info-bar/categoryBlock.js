@@ -45,7 +45,14 @@ export default class CategoryBlock extends React.Component {
                     <div className="tools__date">
                         <span>Выбрать дату: </span>
                         <input 
-                            type="datetime-local" 
+                            type="date" 
+                            name = "date"
+                            value={this.props.task.date} 
+                            onChange={this.handleChangeTask}
+                            style={{marginRight: '5px'}}
+                        />
+                        <input 
+                            type="time" 
                             name = "time"
                             value={this.props.task.time} 
                             onChange={this.handleChangeTask}

@@ -69,18 +69,17 @@ class Elem extends React.Component {
     compareTime() {
         this.late = false;
         let late = '';
-        let timeStr = this.props.task.time;
-        let index = timeStr.indexOf('T');
-        let date = timeStr.slice(0, index);
-        let clock = timeStr.slice(index + 1);
+        let date = this.props.task.date;
+        let time = this.props.task.time;
         // заданное время задачи переводим в формат timestamp
-        let timestamp = Date.parse(timeStr)/1000;
+        let tmpTime = time.length > 0 ? time : "23:59";
+        let timestamp = Date.parse(date + 'T' + tmpTime)/1000;
         // если время задачи меньше текущего 
         if (timestamp < this.state.time) {
             this.late = true;
             late = ' - просрочено';
         }
-        return 'Сделать до: ' + date + ' ' + clock + late; 
+        return 'Сделать до: ' + date + ' ' + time + late; 
     }
 
     render() {
@@ -143,7 +142,7 @@ class Elem extends React.Component {
                                 </span>
                             </div>
                         }
-                        {this.props.task.time.length > 0 && 
+                        {(this.props.task.date.length > 0 || this.props.task.time.length > 0) && 
                             <div 
                                 style={{color: lateColor}}
                                 className="elem__date">
