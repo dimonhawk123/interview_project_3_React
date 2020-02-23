@@ -103,7 +103,7 @@ export default class Weather extends React.Component {
                         <div className="weather__city">{weather.city}</div>
                         <div className="weather__flex">
                             <div className="weather__temp">{sign}{weather.temp} </div>
-                            <div className="weather__img"><img src={weather.imgSrc} /></div>
+                            <div className="weather__img"><img src={weather.imgSrc} alt="weatherIcon" /></div>
                         </div>
                         <div className="weather__description">{description}</div>
                         <table className="weather__table">
