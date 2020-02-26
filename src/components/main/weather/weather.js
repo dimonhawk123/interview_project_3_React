@@ -88,7 +88,7 @@ export default class Weather extends React.Component {
         return(
             <div>
                 <div className="weather__title">
-                    Неплохо было бы прогуляться!)
+                    Может лучше прогуляться?)
                 </div>
                 {this.state.visibleBtn && 
                     <button 
